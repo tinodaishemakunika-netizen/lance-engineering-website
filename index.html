@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lance Engineering | Precision Aluminium & Glass Solutions</title>
+  <meta name="description" content="Leading aluminium and glass specialists in Harare, Zimbabwe delivering precision-engineered architectural solutions for residential, commercial, and industrial projects." />
+  <meta name="theme-color" content="#081222" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050B14',
+              900: '#081222',
+              800: '#0B182E',
+              700: '#122444',
+            },
+            royal: {
+              500: '#2563EB',
+              600: '#1A73E8',
+              700: '#1557B0',
+            }
+          },
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #081222;
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-display {
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: -0.01em;
+    }
+    .glass-card {
+      background: rgba(15, 31, 58, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-overlay {
+      background: linear-gradient(to top, rgba(8, 18, 34, 0.96) 15%, rgba(8, 18, 34, 0.72) 60%, rgba(8, 18, 34, 0.15) 100%);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .page-section {
+      display: none;
+      animation: fadeIn 0.35s ease-out;
+    }
+    .page-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-royal-600 selection:text-white">
+
+  <!-- =========================================================
+       STICKY NAVIGATION HEADER
+  ========================================================== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#home" onclick="navigate('home')" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 flex items-center justify-center">
+          <svg viewBox="0 0 48 48" class="w-10 h-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6H14V34H32V42H6V6Z" fill="#CBD5E1"/>
+            <path d="M18 6H42V13H18V6Z" fill="#94A3B8"/>
+            <path d="M18 19H38V26H18V19Z" fill="#E2E8F0"/>
+            <path d="M35 34H42V42H35V34Z" fill="#1A73E8"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-white font-bold tracking-[0.22em] text-lg leading-none">LANCE</span>
+          <span class="text-slate-400 text-[10px] tracking-[0.34em] mt-1 font-medium">ENGINEERING</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <button onclick="navigate('home')" class="nav-link hover:text-white transition text-white" data-target="home">Home</button>
+        <button onclick="navigate('about')" class="nav-link hover:text-white transition" data-target="about">About</button>
+        <button onclick="navigate('services')" class="nav-link hover:text-white transition" data-target="services">Services</button>
+        <button onclick="navigate('projects')" class="nav-link hover:text-white transition" data-target="projects">Projects</button>
+        <button onclick="navigate('gallery')" class="nav-link hover:text-white transition" data-target="gallery">Gallery</button>
+        <button onclick="navigate('testimonials')" class="nav-link hover:text-white transition" data-target="testimonials">Testimonials</button>
+        <button onclick="navigate('blog')" class="nav-link hover:text-white transition" data-target="blog">Blog</button>
+        <button onclick="navigate('contact')" class="nav-link hover:text-white transition" data-target="contact">Contact</button>
+      </nav>
+
+      <!-- Header Right CTA + Mobile Menu Toggle -->
+      <div class="flex items-center gap-3">
+        <button onclick="navigate('quote')" class="bg-royal-600 hover:bg-royal-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-lg shadow-royal-600/25 flex items-center gap-2 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          <span>Get Quote</span>
+        </button>
+
+        <button id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle Menu" class="lg:hidden p-2.5 rounded-lg text-slate-200 hover:bg-white/10 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-navy-900 border-t border-white/10 px-6 py-5 space-y-3">
+      <button onclick="navigate('home'); toggleMobileMenu()" class="block w-full text-left py-2 text-slate-200 hover:text-white font-medium">Home</button>
+      <button onclick="navigate('about'); toggleMobileMenu()" class="block w-full text-left py-2 text-slate-200 hover:text-white font-medium">About Us</button>
+      <button onclick="navigate('services'); toggleMobileMenu()" class="block w-full text-left py-2 text-slate-200 hover:text-white font-medium">Services</button>
+      <button onclick="navigate('projects'); toggleMobileMenu()" class="block w-full text-left py-2 text-slate-200 hover:text-white font-medium">Projects</button>
+      <button onclick="navigate('gallery'); toggleMobileMenu()" class="block w-full text-left py-2 text-slate-200 hover:text-white font-medium">Video & Photo Gallery</button>
+      <button onclick="navigate('testimonials'); toggleMobileMenu()" class="block w-full text-left py-2 text-slate-200 hover:text-white font-medium">Testimonials</button>
+      <button onclick="navigate('blog'); toggleMobileMenu()" class="block w-full text-left py-2 text-slate-200 hover:text-white font-medium">Blog</button>
+      <button onclick="navigate('contact'); toggleMobileMenu()" class="block w-full text-left py-2 text-slate-200 hover:text-white font-medium">Contact Us</button>
+      <button onclick="navigate('quote'); toggleMobileMenu()" class="w-full mt-2 bg-royal-600 text-white py-3 rounded-lg font-semibold text-center">Request a Quote →</button>
+    </div>
+  </header>
+
+  <main class="pt-20">
+
+    <!-- =========================================================
+         PAGE 1: HOME
+    ========================================================== -->
+    <section id="page-home" class="page-section active">
+
+      <!-- HERO SECTION -->
+      <div class="relative min-h-[86vh] flex items-center justify-center overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80"
+          alt="Modern Commercial Curtain Wall Facade"
+          class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-950/80 via-navy-900/75 to-navy-900"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center py-20">
+          <!-- Pill Badge -->
+          <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-navy-900/70 backdrop-blur-md border border-royal-500/30 mb-8">
+            <span class="text-xs sm:text-sm font-semibold tracking-[0.2em] text-royal-500 uppercase">
+              ALUMINIUM &bull; GLASS &bull; ARCHITECTURAL SOLUTIONS
+            </span>
+          </div>
+
+          <h1 class="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl text-white uppercase leading-[1.02] tracking-tight mb-6">
+            Engineering Excellence in<br class="hidden sm:inline" /> Aluminium &amp; Glass Solutions
+          </h1>
+
+          <p class="max-w-2xl mx-auto text-slate-200 text-lg sm:text-xl font-normal leading-relaxed mb-10">
+            Transforming Homes, Offices, and Commercial Spaces with Premium Aluminium and Glass Installations.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button onclick="navigate('quote')" class="w-full sm:w-auto bg-royal-600 hover:bg-royal-700 text-white font-semibold px-8 py-4 rounded-lg shadow-xl shadow-royal-600/30 transition flex items-center justify-center gap-2 text-base">
+              <span>Request a Quote</span>
+              <span>&rarr;</span>
+            </button>
+            <button onclick="navigate('projects')" class="w-full sm:w-auto bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/25 text-white font-semibold px-8 py-4 rounded-lg transition text-base">
+              View Our Projects
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BENTO WORKSHOP & FEATURED PROJECTS SHOWCASE -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Left Live Fabrication Feature -->
+          <div class="lg:col-span-7 relative rounded-2xl overflow-hidden border border-white/10 min-h-[380px] group">
+            <img
+              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1400&q=80"
+              alt="Precision Aluminium Fabrication Workshop"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-900/30 to-transparent"></div>
+            <div class="absolute top-5 left-5">
+              <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-950/80 backdrop-blur-md border border-white/15 text-xs font-bold tracking-wider uppercase text-white">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                LIVE WORK
+              </span>
+            </div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <p class="text-xs uppercase tracking-[0.2em] text-royal-500 font-semibold mb-1">WORKINGTON FABRICATION PLANT</p>
+              <h3 class="font-display text-2xl sm:text-3xl font-bold text-white">Precision CNC Cutting &amp; Structural Glazing</h3>
+              <p class="text-slate-300 text-sm mt-1">Custom-engineered architectural aluminium and glass systems built to SABS &amp; SANS safety standards.</p>
+            </div>
+          </div>
+
+          <!-- Right Stacked Featured Projects -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            <div onclick="navigate('projects')" class="cursor-pointer relative rounded-2xl overflow-hidden border border-white/10 h-[180px] group">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
+                alt="Borrowdale Luxury Residence"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-900/30 to-transparent"></div>
+              <div class="absolute bottom-4 left-5">
+                <span class="inline-block bg-royal-600 text-white text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded mb-2">RESIDENTIAL</span>
+                <h4 class="font-display text-xl font-bold text-white">Borrowdale Luxury Residence</h4>
+              </div>
+            </div>
+
+            <div onclick="navigate('projects')" class="cursor-pointer relative rounded-2xl overflow-hidden border border-white/10 h-[180px] group">
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
+                alt="Avondale Shopping Centre"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-900/30 to-transparent"></div>
+              <div class="absolute bottom-4 left-5">
+                <span class="inline-block bg-royal-600 text-white text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded mb-2">RETAIL</span>
+                <h4 class="font-display text-xl font-bold text-white">Avondale Shopping Centre</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT WE DO: PRECISION-ENGINEERED SOLUTIONS -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+          <div>
+            <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">WHAT WE DO</p>
+            <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-white leading-tight">
+              Precision-Engineered<br />Solutions
+            </h2>
+          </div>
+          <button onclick="navigate('services')" class="text-royal-500 hover:text-blue-400 font-semibold text-sm inline-flex items-center gap-1.5 transition">
+            <span>View All Services</span>
+            <span>&rarr;</span>
+          </button>
+        </div>
+
+        <div id="homeServicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated dynamically via JS from Services Catalogue -->
+        </div>
+      </div>
+
+      <!-- CLIENT FEEDBACK: WHAT OUR CLIENTS SAY -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/5">
+        <div class="text-center mb-14">
+          <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">CLIENT FEEDBACK</p>
+          <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-white">What Our Clients Say</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Testimonial 1 -->
+          <div class="glass-card rounded-xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-1 text-amber-400 mb-5 text-sm">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <p class="text-slate-300 text-sm leading-relaxed mb-8">
+                "Lance Engineering delivered our curtain wall project on time and to an exceptional standard. Their attention to detail and professionalism throughout was outstanding."
+              </p>
+            </div>
+            <div class="pt-5 border-t border-white/10">
+              <p class="text-white font-bold text-sm">David Moyo</p>
+              <p class="text-royal-500 text-xs mt-0.5">Moyo Property Developments</p>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="glass-card rounded-xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-1 text-amber-400 mb-5 text-sm">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <p class="text-slate-300 text-sm leading-relaxed mb-8">
+                "We specify Lance Engineering on every commercial project. Their fabrication quality is consistently excellent and their installation teams are meticulous."
+              </p>
+            </div>
+            <div class="pt-5 border-t border-white/10">
+              <p class="text-white font-bold text-sm">Sarah Chikwanda</p>
+              <p class="text-royal-500 text-xs mt-0.5">Chikwanda Architects</p>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="glass-card rounded-xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-1 text-amber-400 mb-5 text-sm">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <p class="text-slate-300 text-sm leading-relaxed mb-8">
+                "The aluminium windows and doors they installed transformed our development. Clients consistently comment on the quality. Highly recommended."
+              </p>
+            </div>
+            <div class="pt-5 border-t border-white/10">
+              <p class="text-white font-bold text-sm">James Rutherford</p>
+              <p class="text-royal-500 text-xs mt-0.5">Rutherford Homes</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <button onclick="navigate('testimonials')" class="text-royal-500 hover:text-blue-400 text-sm font-semibold inline-flex items-center gap-1.5 transition">
+            <span>Read More Testimonials</span>
+            <span>&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         PAGE 2: ABOUT
+    ========================================================== -->
+    <section id="page-about" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">ABOUT LANCE ENGINEERING</p>
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white mb-6">
+            Architectural Aluminium &amp; Structural Glazing Specialists
+          </h1>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Headquartered at 22 Nuffield Road in Workington, Harare, Lance Engineering delivers precision-fabricated aluminium systems and high-performance architectural glazing across Zimbabwe.
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-8">
+            From custom residential folding doors and frameless shower cubicles to multi-storey commercial curtain walls and acoustic office partitions, our engineering team combines durable powder-coated profiles with toughened safety glass.
+          </p>
+
+          <div class="grid grid-cols-3 gap-4 mb-8">
+            <div class="glass-card p-5 rounded-xl text-center">
+              <p class="font-display font-extrabold text-3xl text-royal-500">450+</p>
+              <p class="text-xs text-slate-400 mt-1">Projects Completed</p>
+            </div>
+            <div class="glass-card p-5 rounded-xl text-center">
+              <p class="font-display font-extrabold text-3xl text-royal-500">10 Yr</p>
+              <p class="text-xs text-slate-400 mt-1">Profile Warranty</p>
+            </div>
+            <div class="glass-card p-5 rounded-xl text-center">
+              <p class="font-display font-extrabold text-3xl text-royal-500">100%</p>
+              <p class="text-xs text-slate-400 mt-1">Safety Glazing</p>
+            </div>
+          </div>
+
+          <button onclick="navigate('quote')" class="bg-royal-600 hover:bg-royal-700 text-white font-semibold px-7 py-3.5 rounded-lg transition">
+            Schedule a Site Measurement &rarr;
+          </button>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-white/10">
+          <img
+            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
+            alt="Lance Engineering Architectural Glazing"
+            class="w-full h-[460px] object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PAGE 3: SERVICES
+    ========================================================== -->
+    <section id="page-services" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-12">
+        <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">OUR CAPABILITIES</p>
+        <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white mb-4">Complete Architectural Systems</h1>
+        <p class="text-slate-300 max-w-2xl">Every system is custom-measured, fabricated in our Workington workshop, and installed by certified glazing technicians.</p>
+      </div>
+
+      <div id="allServicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PAGE 4: PROJECTS CATALOGUE
+    ========================================================== -->
+    <section id="page-projects" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">PORTFOLIO</p>
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white">Featured Installations</h1>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterProjects('All')" class="proj-filter active bg-royal-600 text-white px-4 py-2 rounded-lg text-xs font-semibold">All</button>
+          <button onclick="filterProjects('Residential')" class="proj-filter glass-card text-slate-300 hover:text-white px-4 py-2 rounded-lg text-xs font-semibold">Residential</button>
+          <button onclick="filterProjects('Commercial')" class="proj-filter glass-card text-slate-300 hover:text-white px-4 py-2 rounded-lg text-xs font-semibold">Commercial</button>
+          <button onclick="filterProjects('Retail')" class="proj-filter glass-card text-slate-300 hover:text-white px-4 py-2 rounded-lg text-xs font-semibold">Retail</button>
+        </div>
+      </div>
+
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PAGE 5: GALLERY
+    ========================================================== -->
+    <section id="page-gallery" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-10">
+        <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">SHOWCASE</p>
+        <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white">Project &amp; Workshop Gallery</h1>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PAGE 6: TESTIMONIALS
+    ========================================================== -->
+    <section id="page-testimonials" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">VERIFIED REVIEWS</p>
+        <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white mb-4">Trusted by Leading Architects &amp; Developers</h1>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-xl p-8">
+          <div class="text-amber-400 mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">"Lance Engineering delivered our curtain wall project on time and to an exceptional standard. Their attention to detail and professionalism throughout was outstanding."</p>
+          <p class="text-white font-bold text-sm">David Moyo</p>
+          <p class="text-royal-500 text-xs">Moyo Property Developments</p>
+        </div>
+        <div class="glass-card rounded-xl p-8">
+          <div class="text-amber-400 mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">"We specify Lance Engineering on every commercial project. Their fabrication quality is consistently excellent and their installation teams are meticulous."</p>
+          <p class="text-white font-bold text-sm">Sarah Chikwanda</p>
+          <p class="text-royal-500 text-xs">Chikwanda Architects</p>
+        </div>
+        <div class="glass-card rounded-xl p-8">
+          <div class="text-amber-400 mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">"The aluminium windows and doors they installed transformed our development. Clients consistently comment on the quality. Highly recommended."</p>
+          <p class="text-white font-bold text-sm">James Rutherford</p>
+          <p class="text-royal-500 text-xs">Rutherford Homes</p>
+        </div>
+        <div class="glass-card rounded-xl p-8">
+          <div class="text-amber-400 mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">"Fast turnaround on our corporate office glass partitions in Sam Levy's Office Park. Clean acoustic sealing and sleek matte black frames."</p>
+          <p class="text-white font-bold text-sm">Tendai Mutasa</p>
+          <p class="text-royal-500 text-xs">Apex Corporate Interiors</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PAGE 7: BLOG
+    ========================================================== -->
+    <section id="page-blog" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-12">
+        <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">TECHNICAL INSIGHTS</p>
+        <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white">Architectural Glazing &amp; Engineering Blog</h1>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="glass-card rounded-xl overflow-hidden flex flex-col">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Double Glazing Guide" class="h-48 w-full object-cover" />
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs text-royal-500 font-semibold uppercase tracking-wider">Thermal &amp; Acoustic</span>
+              <h3 class="font-display text-2xl font-bold text-white mt-2 mb-3">Choosing Between 6.38mm Laminated &amp; Double Glazed Units</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">How to select the right glass specification for Harare's climate, security needs, and sound insulation.</p>
+            </div>
+            <button onclick="navigate('quote')" class="text-royal-500 text-sm font-semibold hover:underline text-left">Ask an Engineer &rarr;</button>
+          </div>
+        </article>
+
+        <article class="glass-card rounded-xl overflow-hidden flex flex-col">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80" alt="Powder Coated Aluminium" class="h-48 w-full object-cover" />
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs text-royal-500 font-semibold uppercase tracking-wider">Finishes &amp; Durability</span>
+              <h3 class="font-display text-2xl font-bold text-white mt-2 mb-3">Charcoal Matte vs. Natural Anodized Aluminium Finishes</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">Comparing UV resistance, scratch durability, and architectural aesthetics for modern residential builds.</p>
+            </div>
+            <button onclick="navigate('quote')" class="text-royal-500 text-sm font-semibold hover:underline text-left">Request Finish Samples &rarr;</button>
+          </div>
+        </article>
+
+        <article class="glass-card rounded-xl overflow-hidden flex flex-col">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80" alt="Office Glass Partitions" class="h-48 w-full object-cover" />
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs text-royal-500 font-semibold uppercase tracking-wider">Commercial Fitouts</span>
+              <h3 class="font-display text-2xl font-bold text-white mt-2 mb-3">Designing Frameless Glass Boardrooms for Acoustic Privacy</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">Best practices for 10mm–12mm toughened glass partitions, patch fittings, and acoustic door seals.</p>
+            </div>
+            <button onclick="navigate('quote')" class="text-royal-500 text-sm font-semibold hover:underline text-left">Book Office Consultation &rarr;</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PAGE 8: CONTACT
+    ========================================================== -->
+    <section id="page-contact" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">GET IN TOUCH</p>
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white mb-6">Contact Lance Engineering</h1>
+          <p class="text-slate-300 mb-8">Visit our fabrication plant in Workington or reach out directly to our estimating and engineering team.</p>
+
+          <div class="space-y-6">
+            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
+              <div class="text-royal-500 mt-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Workshop &amp; Head Office</h3>
+                <p class="text-slate-300 text-sm mt-1">22 Nuffield Workington, Harare, Zimbabwe</p>
+              </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
+              <div class="text-royal-500 mt-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Phone &amp; WhatsApp</h3>
+                <p class="text-slate-300 text-sm mt-1">+263 77 843 1775</p>
+              </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
+              <div class="text-royal-500 mt-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Email Inquiries</h3>
+                <p class="text-slate-300 text-sm mt-1">lancealuminum@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl">
+          <h2 class="font-display text-2xl font-bold text-white mb-6">Send a Direct Message</h2>
+          <form onsubmit="submitContactForm(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Full Name</label>
+              <input type="text" id="contactName" required placeholder="e.g. Tatenda Moyo" class="w-full bg-navy-950/70 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Phone / WhatsApp Number</label>
+              <input type="tel" id="contactPhone" required placeholder="+263 77 ..." class="w-full bg-navy-950/70 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Project Details</label>
+              <textarea id="contactMsg" rows="4" required placeholder="Tell us about your project location and requirements..." class="w-full bg-navy-950/70 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-royal-600 hover:bg-royal-700 text-white font-semibold py-3.5 rounded-lg transition">
+              Send via WhatsApp &rarr;
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PAGE 9: REQUEST QUOTE (WHATSAPP ENGINE)
+    ========================================================== -->
+    <section id="page-quote" class="page-section max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center mb-10">
+        <p class="text-xs font-bold tracking-[0.22em] text-royal-500 uppercase mb-2">INSTANT ESTIMATION</p>
+        <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white mb-3">Request a Project Quotation</h1>
+        <p class="text-slate-300 text-sm max-w-xl mx-auto">Configure your aluminium and glass specifications below to dispatch a structured quotation request directly to our engineering desk on WhatsApp.</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 sm:p-10">
+        <form onsubmit="dispatchWhatsAppQuote(event)" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Name / Company *</label>
+              <input type="text" id="quoteName" required placeholder="e.g. David Moyo" class="w-full bg-navy-950/80 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Site Location (Suburb / City) *</label>
+              <input type="text" id="quoteLocation" required placeholder="e.g. Borrowdale, Harare" class="w-full bg-navy-950/80 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">System / Service Required *</label>
+              <select id="quoteService" class="w-full bg-navy-950/80 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500">
+                <option value="Aluminium Windows">Aluminium Windows</option>
+                <option value="Aluminium Doors">Aluminium Doors (Sliding / Folding / Pivot)</option>
+                <option value="Shopfront Systems">Shopfront Systems</option>
+                <option value="Glass Partitions">Glass Partitions</option>
+                <option value="Curtain Wall Systems">Curtain Wall Systems</option>
+                <option value="Balustrades & Railings">Balustrades &amp; Railings</option>
+                <option value="Triangle Windows">Triangle / Architectural Windows</option>
+                <option value="Shower Cubicles">Shower Cubicles</option>
+                <option value="Glass Repairs">Glass Repairs &amp; Maintenance</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Aluminium Frame Finish</label>
+              <select id="quoteFinish" class="w-full bg-navy-950/80 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500">
+                <option value="Charcoal Matte Powder-Coated">Charcoal Matte Powder-Coated</option>
+                <option value="Natural Silver Anodized">Natural Silver Anodized</option>
+                <option value="Bronze Anodized">Bronze Anodized</option>
+                <option value="Jet Black Matte">Jet Black Matte</option>
+                <option value="Pure White">Pure White</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Glass Specification</label>
+              <select id="quoteGlass" class="w-full bg-navy-950/80 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500">
+                <option value="6.38mm Clear Laminated Safety Glass">6.38mm Clear Laminated Safety Glass</option>
+                <option value="6.38mm Grey / Bronze Tinted Safety Glass">6.38mm Grey / Bronze Tinted Safety Glass</option>
+                <option value="10mm Toughened Frameless Glass">10mm Toughened Frameless Glass</option>
+                <option value="Double Glazed Acoustic / Thermal Unit">Double Glazed Acoustic / Thermal Unit</option>
+                <option value="Reflective Solar Control Glass">Reflective Solar Control Glass</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Approx. Quantities / Dimensions</label>
+              <input type="text" id="quoteDims" placeholder="e.g. 4x Sliding Doors (2400x2100mm)" class="w-full bg-navy-950/80 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Additional Notes / Architectural Schedule</label>
+            <textarea id="quoteNotes" rows="3" placeholder="Any specific hardware, site access notes, or target installation date..." class="w-full bg-navy-950/80 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-royal-500"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-lg shadow-lg shadow-emerald-600/25 transition flex items-center justify-center gap-2 text-base">
+            <span>Send Specification to WhatsApp (+263 77 843 1775)</span>
+            <span>&rarr;</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         GLOBAL PRE-FOOTER CTA BANNER
+    ========================================================== -->
+    <div class="relative overflow-hidden border-t border-white/10">
+      <img
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80"
+        alt="Architectural Curtain Wall Facade"
+        class="absolute inset-0 w-full h-full object-cover object-center opacity-35"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-900/85 to-navy-900/75"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div>
+          <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-white mb-3">
+            Ready to Start Your Project?
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg max-w-xl">
+            Get in touch with our team for a free consultation and detailed quotation.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+          <button onclick="navigate('quote')" class="bg-royal-600 hover:bg-royal-700 text-white font-semibold px-7 py-3.5 rounded-lg shadow-lg shadow-royal-600/30 transition text-center">
+            Request a Quote &rarr;
+          </button>
+          <button onclick="navigate('projects')" class="bg-navy-950/60 hover:bg-white/10 border border-white/20 text-white font-semibold px-7 py-3.5 rounded-lg transition text-center">
+            View Our Projects
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- =========================================================
+       GLOBAL 4-COLUMN FOOTER
+  ========================================================== -->
+  <footer class="bg-navy-950 border-t border-white/10 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+
+        <!-- Column 1: Brand -->
+        <div>
+          <a href="#home" onclick="navigate('home')" class="flex items-center gap-3 mb-5">
+            <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 6H14V34H32V42H6V6Z" fill="#CBD5E1"/>
+              <path d="M18 6H42V13H18V6Z" fill="#94A3B8"/>
+              <path d="M18 19H38V26H18V19Z" fill="#E2E8F0"/>
+              <path d="M35 34H42V42H35V34Z" fill="#1A73E8"/>
+            </svg>
+            <div class="flex flex-col">
+              <span class="text-white font-bold tracking-[0.22em] text-base leading-none">LANCE</span>
+              <span class="text-slate-400 text-[9px] tracking-[0.34em] mt-1 font-medium">ENGINEERING</span>
+            </div>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Leading aluminium and glass specialists delivering precision-engineered architectural solutions for residential, commercial, and industrial projects.
+          </p>
+        </div>
+
+        <!-- Column 2: Services -->
+        <div>
+          <h4 class="text-white text-xs font-bold tracking-[0.18em] uppercase mb-5">SERVICES</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><button onclick="selectServiceForQuote('Aluminium Windows')" class="hover:text-white transition">Aluminium Windows</button></li>
+            <li><button onclick="selectServiceForQuote('Aluminium Doors')" class="hover:text-white transition">Aluminium Doors</button></li>
+            <li><button onclick="selectServiceForQuote('Shopfront Systems')" class="hover:text-white transition">Shopfront Systems</button></li>
+            <li><button onclick="selectServiceForQuote('Glass Partitions')" class="hover:text-white transition">Glass Partitions</button></li>
+            <li><button onclick="selectServiceForQuote('Curtain Wall Systems')" class="hover:text-white transition">Curtain Wall Systems</button></li>
+            <li><button onclick="selectServiceForQuote('Balustrades & Railings')" class="hover:text-white transition">Balustrades &amp; Railings</button></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Company -->
+        <div>
+          <h4 class="text-white text-xs font-bold tracking-[0.18em] uppercase mb-5">COMPANY</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><button onclick="navigate('about')" class="hover:text-white transition">About Us</button></li>
+            <li><button onclick="navigate('projects')" class="hover:text-white transition">Our Projects</button></li>
+            <li><button onclick="navigate('gallery')" class="hover:text-white transition">Video Gallery</button></li>
+            <li><button onclick="navigate('testimonials')" class="hover:text-white transition">Testimonials</button></li>
+            <li><button onclick="navigate('blog')" class="hover:text-white transition">Blog</button></li>
+            <li><button onclick="navigate('contact')" class="hover:text-white transition">Contact Us</button></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div>
+          <h4 class="text-white text-xs font-bold tracking-[0.18em] uppercase mb-5">CONTACT</h4>
+          <ul class="space-y-4 text-sm text-slate-400">
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 text-royal-500 shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>22 Nuffield Workington , Harare, Zimbabwe</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-royal-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <a href="tel:+263778431775" class="hover:text-white transition">+263 77 843 1775</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-royal-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:lancealuminum@gmail.com" class="hover:text-white transition">lancealuminum@gmail.com</a>
+            </li>
+            <li class="pt-2">
+              <button onclick="navigate('quote')" class="w-full bg-royal-600 hover:bg-royal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition text-center text-sm">
+                Request a Quote
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Lance Engineering. All rights reserved.</p>
+        <p>Architectural Aluminium &amp; Structural Glazing &bull; Harare, Zimbabwe</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       FLOATING WHATSAPP QUICK-CHAT BUTTON
+  ========================================================== -->
+  <a
+    href="https://wa.me/263778431775?text=Hello%20Lance%20Engineering%2C%20I%20would%20like%20to%20request%20a%20quotation%20for%20aluminium%20and%20glass%20works."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+    class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl shadow-emerald-500/30 transition transform hover:scale-105 flex items-center gap-2"
+  >
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+    </svg>
+  </a>
+
+  <!-- =========================================================
+       SERVICE DETAIL MODAL
+  ========================================================== -->
+  <div id="serviceModal" class="fixed inset-0 z-50 hidden bg-navy-950/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-card max-w-xl w-full rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
+      <div class="relative h-56">
+        <img id="modalImg" src="" alt="" class="w-full h-full object-cover" />
+        <button onclick="closeServiceModal()" class="absolute top-4 right-4 bg-navy-950/80 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-royal-600 transition">&times;</button>
+      </div>
+      <div class="p-6 sm:p-8">
+        <h3 id="modalTitle" class="font-display text-3xl font-bold text-white mb-2"></h3>
+        <p id="modalDesc" class="text-slate-300 text-sm leading-relaxed mb-4"></p>
+        <div class="bg-navy-950/60 border border-white/10 rounded-lg p-4 mb-6">
+          <p class="text-xs font-bold uppercase tracking-wider text-royal-500 mb-1">Technical Specification</p>
+          <p id="modalSpecs" class="text-xs text-slate-300"></p>
+        </div>
+        <div class="flex gap-3">
+          <button id="modalQuoteBtn" class="flex-1 bg-royal-600 hover:bg-royal-700 text-white font-semibold py-3 rounded-lg text-sm transition">
+            Request Quote for This System &rarr;
+          </button>
+          <button onclick="closeServiceModal()" class="px-5 py-3 rounded-lg border border-white/15 text-slate-300 text-sm hover:text-white transition">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       APPLICATION DATA & INTERACTIVITY SCRIPT
+  ========================================================== -->
+  <script>
+    const WHATSAPP_NUMBER = "263778431775";
+
+    const SERVICES_DATA = [
+      {
+        title: "Aluminium Windows",
+        shortDesc: "Top-hung casement, sliding, and architectural windows engineered for weather sealing and smooth operation.",
+        specs: "30.5 / 38mm Architectural Series • EPDM Weather Seals • 6.38mm Laminated or Double Glazing",
+        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80",
+        featuredHome: true
+      },
+      {
+        title: "Aluminium Doors",
+        shortDesc: "High-performance aluminium door systems — from entrance doors to sliding and bi-fold configurations.",
+        specs: "Heavy-Duty Palace Sliding & Vista Folding Systems • Multi-Point Security Locks • Stainless Steel Rollers",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80",
+        featuredHome: true
+      },
+      {
+        title: "Shopfront Systems",
+        shortDesc: "Flush-glazed commercial retail storefronts designed for maximum visibility, durability, and security.",
+        specs: "100x45mm & 150x45mm Commercial Mullions • Heavy-Duty Pivot Doors • Concealed Overhead Closers",
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
+        featuredHome: true
+      },
+      {
+        title: "Glass Partitions",
+        shortDesc: "Sleek frameless and slimline framed acoustic office partitions for modern corporate interiors.",
+        specs: "10mm–12mm Toughened Safety Glass • Acoustic Perimeter Channels • Patch-Fitted Glass Doors",
+        image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80",
+        featuredHome: true
+      },
+      {
+        title: "Triangle Windows",
+        shortDesc: "Structural gable-end and custom geometric glazing systems for pitched roofs and feature facades.",
+        specs: "Custom CNC Mitre-Cut Profiles • Structural Silicone Glazing • Solar-Control Reflective Glass",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
+        featuredHome: true
+      },
+      {
+        title: "Balustrades & Railings",
+        shortDesc: "Frameless spigot, channel-set, and stainless-steel handrail glass balustrades for balconies and staircases.",
+        specs: "12mm Toughened Safety Glass • Marine-Grade 316 Stainless Spigots • Top-Slotted Aluminium Handrails",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
+        featuredHome: true
+      },
+      {
+        title: "Curtain Wall Systems",
+        shortDesc: "Unitized and stick-built structural curtain wall glazing systems for large-scale commercial buildings.",
+        specs: "Thermally Broken Pressure Plates • Low-E Double Glazed Units • Wind-Load Engineered",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80",
+        featuredHome: false
+      },
+      {
+        title: "Shower Cubicles",
+        shortDesc: "Bespoke frameless and semi-frameless toughened glass shower enclosures with chrome or matte black hardware.",
+        specs: "8mm–10mm Clear Toughened Glass • Anti-Leak Magnetic Seals • Solid Brass Hinges",
+        image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=80",
+        featuredHome: false
+      },
+      {
+        title: "Glass Repairs",
+        shortDesc: "Rapid commercial and residential glass replacement, roller servicing, and weather-seal refurbishment.",
+        specs: "Same-Day Emergency Board-Up & Reglazing • Genuine Hardware Replacement • Harare-Wide Callouts",
+        image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=900&q=80",
+        featuredHome: false
+      }
+    ];
+
+    const PROJECTS_DATA = [
+      {
+        title: "Borrowdale Luxury Residence",
+        category: "Residential",
+        location: "Borrowdale Brooke, Harare",
+        scope: "6-Panel Vista Folding Doors, Casement Windows & Frameless Balustrades",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
+      },
+      {
+        title: "Avondale Shopping Centre",
+        category: "Retail",
+        location: "Avondale, Harare",
+        scope: "Flush-Glazed Double-Volume Shopfronts & Heavy-Duty Entrance Doors",
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
+      },
+      {
+        title: "Eastgate Corporate Tower Fitout",
+        category: "Commercial",
+        location: "CBD, Harare",
+        scope: "Acoustic Frameless Office Partitions & Solar-Control Curtain Wall",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
+      },
+      {
+        title: "Highlands Modern Villa",
+        category: "Residential",
+        location: "Highlands, Harare",
+        scope: "Gable Triangle Architectural Windows & Palace Sliding Patio Doors",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80"
+      },
+      {
+        title: "Msasa Industrial Showroom",
+        category: "Commercial",
+        location: "Msasa, Harare",
+        scope: "150mm Structural Shopfront Glazing & Automated Sliding Entrances",
+        image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1000&q=80"
+      },
+      {
+        title: "Mount Pleasant Duplexes",
+        category: "Residential",
+        location: "Mount Pleasant, Harare",
+        scope: "Charcoal Matte Windows, Pivot Entrance Doors & Shower Cubicles",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=80"
+      }
+    ];
+
+    function createServiceCard(service) {
+      return `
+        <div class="relative rounded-xl overflow-hidden border border-white/10 h-80 group cursor-pointer" onclick='openServiceModal(${JSON.stringify(service).replace(/'/g, "&apos;")})'>
+          <img src="${service.image}" alt="${service.title}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+          <div class="absolute inset-x-0 bottom-0 glass-overlay p-6 pt-10 flex flex-col justify-end">
+            <h3 class="font-display text-2xl font-bold text-white mb-1.5">${service.title}</h3>
+            <p class="text-slate-300 text-xs leading-relaxed line-clamp-2 mb-3">${service.shortDesc}</p>
+            <span class="text-royal-500 group-hover:text-blue-400 text-xs font-semibold inline-flex items-center gap-1 transition">
+              Learn more <span>&rarr;</span>
+            </span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderServices() {
+      const homeGrid = document.getElementById("homeServicesGrid");
+      const allGrid = document.getElementById("allServicesGrid");
+      if (homeGrid) {
+        homeGrid.innerHTML = SERVICES_DATA.filter(s => s.featuredHome).map(createServiceCard).join("");
+      }
+      if (allGrid) {
+        allGrid.innerHTML = SERVICES_DATA.map(createServiceCard).join("");
+      }
+    }
+
+    function renderProjects(filter = "All") {
+      const grid = document.getElementById("projectsGrid");
+      if (!grid) return;
+      const filtered = filter === "All" ? PROJECTS_DATA : PROJECTS_DATA.filter(p => p.category === filter);
+      grid.innerHTML = filtered.map(proj => `
+        <div class="glass-card rounded-xl overflow-hidden flex flex-col group">
+          <div class="relative h-56 overflow-hidden">
+            <img src="${proj.image}" alt="${proj.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+            <span class="absolute top-4 left-4 bg-royal-600 text-white text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded">${proj.category}</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-xs text-royal-500 font-semibold mb-1">${proj.location}</p>
+              <h3 class="font-display text-2xl font-bold text-white mb-2">${proj.title}</h3>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">${proj.scope}</p>
+            </div>
+            <button onclick="selectServiceForQuote('${proj.title} Similar Scope')" class="text-royal-500 hover:text-blue-400 text-xs font-semibold text-left">
+              Request Similar Quote &rarr;
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderGallery() {
+      const grid = document.getElementById("galleryGrid");
+      if (!grid) return;
+      grid.innerHTML = PROJECTS_DATA.map(item => `
+        <div class="relative rounded-xl overflow-hidden border border-white/10 h-64 group">
+          <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-5">
+            <div>
+              <p class="text-xs text-royal-500 font-bold uppercase">${item.category}</p>
+              <h4 class="font-display text-lg font-bold text-white">${item.title}</h4>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function filterProjects(category) {
+      document.querySelectorAll(".proj-filter").forEach(btn => {
+        btn.classList.remove("bg-royal-600", "text-white");
+        btn.classList.add("glass-card", "text-slate-300");
+        if (btn.textContent.trim() === category) {
+          btn.classList.add("bg-royal-600", "text-white");
+          btn.classList.remove("glass-card", "text-slate-300");
+        }
+      });
+      renderProjects(category);
+    }
+
+    function navigate(pageId) {
+      document.querySelectorAll(".page-section").forEach(sec => sec.classList.remove("active"));
+      const target = document.getElementById(`page-${pageId}`);
+      if (target) target.classList.add("active");
+
+      document.querySelectorAll(".nav-link").forEach(link => {
+        link.classList.remove("text-white");
+        link.classList.add("text-slate-300");
+        if (link.dataset.target === pageId) {
+          link.classList.add("text-white");
+          link.classList.remove("text-slate-300");
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    }
+
+    function openServiceModal(service) {
+      document.getElementById("modalImg").src = service.image;
+      document.getElementById("modalTitle").textContent = service.title;
+      document.getElementById("modalDesc").textContent = service.shortDesc;
+      document.getElementById("modalSpecs").textContent = service.specs;
+      document.getElementById("modalQuoteBtn").onclick = () => {
+        closeServiceModal();
+        selectServiceForQuote(service.title);
+      };
+      document.getElementById("serviceModal").classList.remove("hidden");
+    }
+
+    function closeServiceModal() {
+      document.getElementById("serviceModal").classList.add("hidden");
+    }
+
+    function selectServiceForQuote(serviceName) {
+      navigate("quote");
+      const select = document.getElementById("quoteService");
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].value.toLowerCase().includes(serviceName.toLowerCase())) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    }
+
+    function dispatchWhatsAppQuote(event) {
+      event.preventDefault();
+      const name = document.getElementById("quoteName").value;
+      const location = document.getElementById("quoteLocation").value;
+      const service = document.getElementById("quoteService").value;
+      const finish = document.getElementById("quoteFinish").value;
+      const glass = document.getElementById("quoteGlass").value;
+      const dims = document.getElementById("quoteDims").value || "Site measurement required";
+      const notes = document.getElementById("quoteNotes").value || "None";
+
+      const message = [
+        `*LANCE ENGINEERING - QUOTATION REQUEST*`,
+        `------------------------------------`,
+        `*Client:* ${name}`,
+        `*Location:* ${location}`,
+        `*System:* ${service}`,
+        `*Finish:* ${finish}`,
+        `*Glass Spec:* ${glass}`,
+        `*Dimensions/Qty:* ${dims}`,
+        `*Notes:* ${notes}`
+      ].join("\n");
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+    }
+
+    function submitContactForm(event) {
+      event.preventDefault();
+      const name = document.getElementById("contactName").value;
+      const phone = document.getElementById("contactPhone").value;
+      const msg = document.getElementById("contactMsg").value;
+
+      const text = `*Website Inquiry - Lance Engineering*\n*Name:* ${name}\n*Phone:* ${phone}\n*Message:* ${msg}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    // Initialize sections on load
+    document.addEventListener("DOMContentLoaded", () => {
+      renderServices();
+      renderProjects();
+      renderGallery();
+    });
+  </script>
+</body>
+</html>
