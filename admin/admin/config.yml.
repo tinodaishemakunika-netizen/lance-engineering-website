@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: YOUR_USERNAME/lance-engineering-website
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "gallery"
+    label: "Gallery Images"
+    folder: "content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Image Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Aluminium Windows", "Aluminium Doors", "Shopfronts", "Balustrades", "Workshop"]
+      - { label: "Upload Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text", required: false }
