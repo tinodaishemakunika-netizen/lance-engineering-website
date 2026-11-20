@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: tinodaishemakunika-netizen/lance-engineering-website
+  branch: main
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
