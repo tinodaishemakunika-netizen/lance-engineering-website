@@ -1,0 +1,16 @@
+backend:
+  name: github
+  repo: tinodaishemakunika-netizen/lance-engineering-website
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "content/home.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
